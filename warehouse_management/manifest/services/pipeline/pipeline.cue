@@ -13,6 +13,10 @@ pipeline.#Spec & {
         resolvers.deleteAllTailorDBRecords,
         resolvers.createShipOutFromBinStock,
         resolvers.transferBinStock,
-        resolvers.listPicking
+        resolvers.listPicking,
+
+        resolvers.createGeneralLedgerTrx,
+        resolvers.createGeneralLedgerLineItemTrx,
+        resolvers.recalculateGeneralLedger
     ]
 }

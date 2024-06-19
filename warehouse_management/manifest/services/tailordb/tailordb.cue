@@ -4,6 +4,7 @@ import (
     "github.com/tailor-platform/tailorctl/schema/v2/tailordb"
     "tailor.build/template/manifest/services/tailordb/master"
     "tailor.build/template/manifest/services/tailordb/transaction"
+    "tailor.build/template/manifest/services/tailordb/ledger"
     "tailor.build/template/environment"
 )
 
@@ -26,5 +27,8 @@ tailordb.#Spec & {
         {transaction.SalesOrderLineItem},
         {transaction.ShipOut},
         {transaction.ShipOutLineItem},
+        {ledger.GeneralLedger},
+        {ledger.GeneralLedgerLineItem},
+        {ledger.LedgerWallet}
     ]
 }

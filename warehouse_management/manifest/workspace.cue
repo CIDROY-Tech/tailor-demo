@@ -5,6 +5,7 @@ import (
     "tailor.build/template/manifest/application"
     "tailor.build/template/manifest/services/tailordb"
     "tailor.build/template/manifest/services/pipeline"
+    "tailor.build/template/manifest/services/executor"
     "tailor.build/template/manifest/services/auth"
 )
 
@@ -12,5 +13,5 @@ v2.#Workspace & {
     Apps: [
         application
     ]
-    Services: [tailordb, pipeline, auth]
+    Services: [tailordb, pipeline, auth, executor]
 }

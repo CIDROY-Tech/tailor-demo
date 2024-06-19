@@ -8,6 +8,10 @@ import (
 SalesOrderLineItem: tailordb.#Type & {
     Name:        "SalesOrderLineItem"
     Description: "SalesOrderLineItem model"
+    Settings: {
+        Aggregation: true
+        PublishRecordEvents: true
+    }
     Fields: {
         productID: {
             Type:        tailordb.#TypeUUID
