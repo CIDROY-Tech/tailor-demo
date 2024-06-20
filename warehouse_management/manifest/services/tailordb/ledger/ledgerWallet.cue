@@ -36,6 +36,7 @@ LedgerWallet: tailordb.#Type & {
         balance: {
             Type:        tailordb.#TypeFloat
             Description: "Total balance in the ledger."
+            // FYI you can use decimal type https://github.com/tailor-platform-templates/private-templates/blob/5b8a1bca8ef6e1ee96ae75970b0acb80a1eb69ad/v2/public/ims/manifest/services/tailordb/master/receiptLineItem.cue#L53
             Hooks: {
                 CreateExpr: "_value.credit - _value.debit",
                 UpdateExpr: "_value.credit - _value.debit",

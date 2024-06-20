@@ -5,8 +5,8 @@ import (
     "tailor.build/template/manifest/services/tailordb:permissions"
 )
 
-GeneralLedger: tailordb.#Type & {
-    Name:        "GeneralLedger"
+GeneralLedgerLineItem: tailordb.#Type & {
+    Name:        "GeneralLedgerLineItem"
     Description: "General Ledger Transaction Model."
     Settings: {
         Aggregation: true
