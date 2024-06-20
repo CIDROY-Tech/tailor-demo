@@ -56,6 +56,15 @@ GeneralLedger: tailordb.#Type & {
             SourceId:    "lineItemIDs"
             Array:       true
         }
+        // If you want to have an array of nested objects, you can define it like this.
+		purchaseOrders: {
+			Type:        tailordb.#TypeNested
+			Description: "purchaseOrders"
+			Array:       true
+            // it's just a reference to the fields defined below.
+            // you can directly write the nested fields here.
+			Fields:      _purchaseOrderFields
+		}
 
         amount: {
             Type:        tailordb.#TypeFloat
@@ -111,3 +120,18 @@ GeneralLedger: tailordb.#Type & {
     }
     TypePermission: permissions.employee
 }
+
+	_purchaseOrderFields: {[string]: tailordb.#Field} & {
+		purchaseOrder: {
+			Type:        "PurchaseOrder"
+			Description: "purchaseOrder"
+			SourceId:    "purchaseOrderId"
+		}
+		purchaseOrderId: {
+			Type:           tailordb.#TypeUUID
+			Description:    "purchaseOrderId"
+			ForeignKey:     true
+			ForeignKeyType: "PurchaseOrder"
+		}
+	}
+

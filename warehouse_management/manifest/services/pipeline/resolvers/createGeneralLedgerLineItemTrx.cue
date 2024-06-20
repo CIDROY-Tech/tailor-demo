@@ -45,6 +45,13 @@ createGeneralLedgerLineItemTrx: pipeline.#Resolver & {
                     }
                 }"""
             }
+            // Pre/PostScript will evaluate cel-go expressions
+            // also PostValidation can be used to validate the operation result and throw an error.
+            // https://github.com/tailor-platform-templates/private-templates/blob/5b8a1bca8ef6e1ee96ae75970b0acb80a1eb69ad/v2/public/ims/manifest/services/pipeline/resolvers/createStockEventsFromReceiptLineItems.cue#L80
+
+            // if you want to use JS, you can write it with Pre/PostHook https://docs.tailor.tech/reference/js-scripting#pipeline
+            // here you can throw the error with TailorErrorMessage
+            // you can see the available properties in cue.mod/pkg/github.com/tailor-platform/tailorctl/schema/v2/pipeline/pipeline.cue
             PostScript: """
             {
                 "result": args.salesOrderLineItem,
@@ -61,6 +68,7 @@ createGeneralLedgerLineItemTrx: pipeline.#Resolver & {
             }"""
             Invoker: settings.adminInvoker
             Operation: pipeline.#GraphqlOperation & {
+                // invalid GQL need a fix
                 Query: """
                 query fetchGeneralLedger($salesOrderID:ID!) {
                     generalLedgers(query: { "related.salesOrderID": { eq: $salesOrderID }} ) {
